@@ -20,10 +20,10 @@ export const metadata: Metadata = {
     },
   ],
   creator: "nambui",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
+  // themeColor: [
+  //   { media: "(prefers-color-scheme: light)", color: "white" },
+  //   { media: "(prefers-color-scheme: dark)", color: "black" },
+  // ],
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -53,7 +53,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head/>
+      <head />
       <body className={inter.className}>
         <Header />
         {children}

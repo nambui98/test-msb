@@ -1,5 +1,5 @@
 import { User } from "@prisma/client"
-import type { Icon } from "lucide-react"
+import type { Icon, LucideIcon } from "lucide-react"
 
 import { Icons } from "@/components/icons"
 
@@ -42,7 +42,9 @@ export type SiteConfig = {
 export type AppConfig = {
     mainNav: MainNavItem[]
 }
-
+export type DashboardConfig = {
+    mainNav: (MainNavItem & { icon: LucideIcon, breadcrumb: string })[]
+}
 export type DashboardConfig = {
     mainNav: MainNavItem[]
     sidebarNav: SidebarNavItem[]
