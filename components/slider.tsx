@@ -14,6 +14,7 @@ import { Button } from "./ui/button";
 export const Slider = () => {
   const pagination = {
     clickable: true,
+
     renderBullet: function (index: number, className: string) {
       return (
         '<span class="px-3 !rounded-sm !h-1 ' + className + '">' + "</span>"
@@ -27,10 +28,10 @@ export const Slider = () => {
       modules={[Pagination, EffectFade, Autoplay]}
       onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => console.log(swiper)}
-      // autoplay={{
-      //   delay: 2500,
-      //   disableOnInteraction: false,
-      // }}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+      }}
     >
       <SwiperSlide>
         {({ isActive }) => (
@@ -43,7 +44,7 @@ export const Slider = () => {
               height={850}
               priority
             />
-            <div className="absolute inset-x-0 top-1/4 max-w-5xl mx-auto">
+            <div className="absolute inset-x-0 top-1/4 md:max-w-3xl lg:max-w-5xl mx-auto">
               <motion.div
                 className=""
                 initial={{ opacity: 0, translateY: 60 }}
@@ -52,13 +53,13 @@ export const Slider = () => {
                   translateY: isActive ? 0 : 60,
                 }}
               >
-                <h1 className="max-w-[423px] text-[40px] font-bold leading-[48px] tracking-[-0.2px]">
+                <h1 className="max-w-[423px] md:text-2xl lg:text-[40px] font-bold lg:leading-[48px] tracking-[-0.2px]">
                   Trải nghiệm sống cực chất cho dân văn phòng
                 </h1>
-                <p className="mt-4 text-base font-normal tracking-[-0.08px] text-secondary-500">
+                <p className="mt-2 lg:mt-4 text-base font-normal tracking-[-0.08px] text-secondary-500">
                   Lương từ 8 triệu/tháng, nhận ngay tới 200 triệu VND
                 </p>
-                <Button variant={"default"} className="mt-8">
+                <Button variant={"default"} className="mt-4 lg:mt-8">
                   Khám phá ngay
                 </Button>
               </motion.div>
@@ -77,7 +78,7 @@ export const Slider = () => {
               height={850}
               priority
             />
-            <div className="absolute inset-x-0 top-1/2 transform  -translate-y-1/2 max-w-5xl mx-auto">
+            <div className="absolute inset-x-0 top-1/4  md:max-w-3xl lg:max-w-5xl mx-auto">
               <motion.div
                 className=""
                 initial={{ opacity: 0, translateY: 60 }}
@@ -86,13 +87,13 @@ export const Slider = () => {
                   translateY: isActive ? 0 : 60,
                 }}
               >
-                <h1 className="max-w-[423px] text-white text-[40px] font-bold leading-[48px] tracking-[-0.2px]">
+                <h1 className="max-w-[423px] md:text-2xl lg:text-[40px] font-bold lg:leading-[48px] tracking-[-0.2px]">
                   Trải nghiệm sống cực chất cho dân văn phòng
                 </h1>
-                <p className="mt-4 text-base font-normal tracking-[-0.08px] text-secondary-500">
+                <p className="mt-2 lg:mt-4 text-base font-normal tracking-[-0.08px] text-secondary-500">
                   Lương từ 8 triệu/tháng, nhận ngay tới 200 triệu VND
                 </p>
-                <Button variant={"default"} className="mt-8">
+                <Button variant={"default"} className="mt-4 lg:mt-8">
                   Khám phá ngay
                 </Button>
               </motion.div>

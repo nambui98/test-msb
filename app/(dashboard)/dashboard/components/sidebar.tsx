@@ -24,7 +24,7 @@ export default function Sidebar({ user }: Props) {
     }).then(() => router.refresh());
   };
   return (
-    <div className="sticky h-fit top-3 border border-secondary-200 rounded-[8px] bg-white text-base font-medium">
+    <div className="sticky h-fit top-20 border border-secondary-200 rounded-[8px] bg-white text-base font-medium">
       <div className="p-4 border-b border-secondary-200  text-lg text-secondary-800">
         {user.username}
       </div>

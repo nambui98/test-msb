@@ -1,4 +1,4 @@
-import { SiteConfig, AppConfig } from "@/types";
+import { SiteConfig, AppConfig, ProductCategory } from "@/types";
 
 export const siteConfig: SiteConfig = {
     name: "Test MSB",
@@ -63,3 +63,30 @@ export const appConfig: AppConfig = {
         }
     ]
 }
+
+export const productCategories: ProductCategory[] = [
+    {
+        id: 1,
+        title: "Thẻ tín dụng",
+        value: 1
+    },
+    {
+        id: 2,
+        title: "Mua trước trả sau",
+        value: 2
+    }, {
+        id: 3,
+        title: "Vay linh hoạt",
+        value: 3
+    },
+    {
+        id: 4,
+        title: "Tài khoản M-Pro",
+        value: 4
+    },
+    {
+        id: 5,
+        title: "Tiền nhanh",
+        value: 5
+    },
+]

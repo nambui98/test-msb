@@ -5,10 +5,14 @@ type Props = {};
 
 function HighLight({}: Props) {
   return (
-    <div className="max-w-5xl mx-auto flex  transform z-10 relative -translate-y-1/2 bg-white rounded-2xl shadow-secondary-2xl border border-black/10 ">
-      <div className="p-12 pr-12">
+    <div className="md:max-w-3xl lg:max-w-5xl mx-auto flex  transform z-10 relative -translate-y-1/2 bg-white rounded-2xl shadow-secondary-2xl border border-black/10 ">
+      <div className="md:p-6 lg:p-12">
         <h3
-          className="max-w-[173px] font-bold text-2xl 
+          className="
+          max-w-[173px] 
+          font-bold 
+          md:text-xl
+          lg:text-2xl 
           tracking-[-0.12px]
            text-secondary-800 "
         >
@@ -16,46 +20,48 @@ function HighLight({}: Props) {
         </h3>
       </div>
 
-      <div className="flex-1 py-10 grid grid-cols-3">
-        <div className="px-4">
+      <div className="flex-1 md:py-5 lg:py-10 grid grid-cols-3">
+        <div className="px-2 lg:px-4">
           <Image
             src={"/icons/document.svg"}
             alt="document"
             width={40}
             height={40}
           />
-          <h4 className="font-bold text-lg leading-6 mt-4 text-secondary-800">
+          <h4 className="font-bold md:text-base lg:text-lg lg:leading-6 mt-2 lg:mt-4 text-secondary-800">
             100% online
           </h4>
-          <p className="text-base font-normal mt-2 leading-6 text-secondary-500">
+          <p className="text-sm lg:text-base font-normal mt-2 lg:leading-6 text-secondary-500">
             Đăng ký và nộp hồ sơ trực tuyến
           </p>
         </div>
-        <div className="px-4">
+        <div className="px-2 lg:px-4">
           <Image
             src={"/icons/documents-file-checkmark.svg"}
             alt="document checkmark"
             width={40}
             height={40}
           />
-          <h4 className="font-bold text-lg leading-6 mt-4 text-secondary-800">
+
+          <h4 className="font-bold md:text-base lg:text-lg lg:leading-6 mt-2 lg:mt-4 text-secondary-800">
             Phê duyệt thần tốc
           </h4>
-          <p className="text-base font-normal mt-2 leading-6 text-secondary-500">
+          <p className="text-sm lg:text-base font-normal mt-2 lg:leading-6 text-secondary-500">
             Duyệt hồ sơ nhanh trong 5 phút
           </p>
         </div>
-        <div className="px-4">
+        <div className="px-2 lg:px-4">
           <Image
             src={"/icons/documents-file-copy-replace.svg"}
             alt="document replace"
             width={40}
             height={40}
           />
-          <h4 className="font-bold text-lg leading-6 mt-4 text-secondary-800">
+
+          <h4 className="font-bold md:text-base lg:text-lg lg:leading-6 mt-2 lg:mt-4 text-secondary-800">
             Sử dụng linh hoạt
           </h4>
-          <p className="text-base font-normal mt-2 leading-6 text-secondary-500">
+          <p className="text-sm lg:text-base font-normal mt-2 lg:leading-6 text-secondary-500">
             Dễ dàng chuyển đổi linh hoạt giữa các sản phẩm
           </p>
         </div>

@@ -1,6 +1,7 @@
 import { getCurrentUser } from "@/lib/session";
 import { notFound } from "next/navigation";
 import UserInfo from "./components/user-info";
+import { Product } from "@/types";
 
 type Props = {};
 

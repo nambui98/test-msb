@@ -15,7 +15,7 @@ export default async function layout({ children }: Props) {
     return notFound();
   }
   return (
-    <div className="mx-auto max-w-5xl mt-6">
+    <div className="min-h-[calc(100vh_-_121px)] pt-6 mx-auto max-w-5xl ">
       <Breadcrumbs currentPage="Quản lý tài khoản" />
       <div className="mt-6 grid grid-cols-3 gap-x-6">
         <Sidebar user={user} />

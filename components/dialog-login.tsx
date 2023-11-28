@@ -4,7 +4,6 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogOverlay,
@@ -12,68 +11,82 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { CopyIcon } from "lucide-react";
-import { MenubarTrigger } from "./ui/menubar";
-import { signIn } from "next-auth/react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { userAuthSchema } from "@/lib/validations/auth";
-import { toast } from "./ui/use-toast";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { signIn } from "next-auth/react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 import { Icons } from "./icons";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "./ui/form";
-interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
+import { MenubarTrigger } from "./ui/menubar";
+import { toast } from "./ui/use-toast";
 
 type FormData = z.infer<typeof userAuthSchema>;
 export function DialogLogin() {
+  const router = useRouter();
   const form = useForm<FormData>({
     resolver: zodResolver(userAuthSchema),
   });
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = form;
+  const { handleSubmit } = form;
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isGitHubLoading, setIsGitHubLoading] = useState<boolean>(false);
   const searchParams = useSearchParams();
 
   async function onSubmit(data: FormData) {
-    debugger;
     setIsLoading(true);
-
-    const signInResult = await signIn("username_password", {
+    signIn("username_password", {
       username: data.username,
       password: data.password,
-      // redirect: false,
+      redirect: false,
       callbackUrl: searchParams?.get("from") || "/dashboard",
-    });
+    })
+      .then(({ ok, error }: any) => {
+        console.log(error);
 
-    setIsLoading(false);
-
-    if (!signInResult?.ok) {
-      return toast({
-        title: "Đã có lỗi xảy ra",
-        description: "Đăng nhập lỗi, vui lòng thử lại.",
-        variant: "destructive",
+        debugger;
+        if (ok) {
+          router.push("/dashboard");
+        } else {
+          toast({
+            title: error,
+            description: "Đăng nhập lỗi, vui lòng thử lại.",
+            variant: "destructive",
+          });
+        }
+      })
+      .catch((err) => {
+        debugger;
+        toast({
+          title: err,
+          description: "Đăng nhập lỗi, vui lòng thử lại.",
+          variant: "destructive",
+        });
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
-    }
+    // debugger;
 
-    return toast({
-      title: "Kiểm tra lại thông tin đăng nhập",
-      description: "We sent you a login link. Be sure to check your spam too.",
-    });
+    // if (!signInResult?.ok) {
+    //   return toast({
+    //     title: "Đã có lỗi xảy ra",
+    //     description: "Đăng nhập lỗi, vui lòng thử lại.",
+    //     variant: "destructive",
+    //   });
+    // }
+
+    // return toast({
+    //   title: "Kiểm tra lại thông tin đăng nhập",
+    //   description: "We sent you a login link. Be sure to check your spam too.",
+    // });
   }
   return (
     <Dialog>

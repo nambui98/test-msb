@@ -61,3 +61,15 @@ export type UserSubscriptionPlan = SubscriptionPlan &
         stripeCurrentPeriodEnd: number
         isPro: boolean
     }
+
+export type ProductCategory = {
+    id: number
+    title: string
+    value: number
+}
+export type Product = {
+    id: number,
+    title: string,
+    content: string,
+    imageUrl: string
+}

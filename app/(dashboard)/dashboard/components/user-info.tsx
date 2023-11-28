@@ -21,7 +21,7 @@ export default function UserInfo({ user }: Props) {
         <div className="flex items-center gap-x-4">
           <p className="w-[120px]">Số CMND/CCCD</p>
           <p className="font-medium text-secondary-800">
-            {user.token.slice(0, 20)}
+            {user.token?.slice(0, 20)}
           </p>
         </div>
         <div className="flex items-center gap-x-4">
