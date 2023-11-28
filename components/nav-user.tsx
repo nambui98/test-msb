@@ -21,8 +21,11 @@ export default function NavUser({ user }: Props) {
   const handleSignOut = (e: MouseEvent) => {
     e.preventDefault();
     signOut({
-      callbackUrl: `${window.location.origin}/`,
-    }).then(() => router.refresh());
+      redirect: false,
+    }).then(() => {
+      router.push("/");
+      router.refresh();
+    });
   };
   return (
     <DropdownMenu>

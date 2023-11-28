@@ -20,8 +20,11 @@ export default function Sidebar({ user }: Props) {
   const handleSignOut = (e: MouseEvent) => {
     e.preventDefault();
     signOut({
-      callbackUrl: `${window.location.origin}/`,
-    }).then(() => router.refresh());
+      redirect: false,
+    }).then(() => {
+      router.push("/");
+      router.refresh();
+    });
   };
   return (
     <div className="sticky h-fit top-20 border border-secondary-200 rounded-[8px] bg-white text-base font-medium">

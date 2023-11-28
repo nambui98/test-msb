@@ -15,7 +15,7 @@ import { userAuthSchema } from "@/lib/validations/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Icons } from "./icons";
@@ -33,6 +33,7 @@ import { toast } from "./ui/use-toast";
 type FormData = z.infer<typeof userAuthSchema>;
 export function DialogLogin() {
   const router = useRouter();
+  const refClose = useRef<HTMLButtonElement | null>(null);
   const form = useForm<FormData>({
     resolver: zodResolver(userAuthSchema),
   });
@@ -50,10 +51,10 @@ export function DialogLogin() {
     })
       .then(({ ok, error }: any) => {
         console.log(error);
-
-        debugger;
         if (ok) {
+          refClose.current?.click();
           router.push("/dashboard");
+          router.refresh();
         } else {
           toast({
             title: error,
@@ -63,7 +64,6 @@ export function DialogLogin() {
         }
       })
       .catch((err) => {
-        debugger;
         toast({
           title: err,
           description: "Đăng nhập lỗi, vui lòng thử lại.",
@@ -73,20 +73,6 @@ export function DialogLogin() {
       .finally(() => {
         setIsLoading(false);
       });
-    // debugger;
-
-    // if (!signInResult?.ok) {
-    //   return toast({
-    //     title: "Đã có lỗi xảy ra",
-    //     description: "Đăng nhập lỗi, vui lòng thử lại.",
-    //     variant: "destructive",
-    //   });
-    // }
-
-    // return toast({
-    //   title: "Kiểm tra lại thông tin đăng nhập",
-    //   description: "We sent you a login link. Be sure to check your spam too.",
-    // });
   }
   return (
     <Dialog>
@@ -145,53 +131,15 @@ export function DialogLogin() {
                 </FormItem>
               )}
             />
-            {/* <div>
-              <Label
-                htmlFor="username"
-                className="mb-1 text-sm font-medium text-secondary-800"
-              >
-                Tên tài khoản
-              </Label>
-              <Input
-                placeholder="Nhập tên tài khoản"
-                id="username"
-                autoCapitalize="none"
-                autoComplete="username"
-                autoCorrect="off"
-                disabled={isLoading}
-                {...register("username")}
-              />
-              {errors?.username && (
-                <p className="px-1 text-xs text-red-600">
-                  {errors.username.message}
-                </p>
-              )}
-            </div>
-            <div>
-              <Label
-                htmlFor="password"
-                className="mb-1 text-sm font-medium text-secondary-800"
-              >
-                Mật khẩu
-              </Label>
-              <Input
-                placeholder="Nhập tên tài khoản"
-                id="password"
-                autoCapitalize="none"
-                autoComplete="password"
-                autoCorrect="off"
-                disabled={isLoading}
-                {...register("password")}
-              />
-              {errors?.password && (
-                <p className="px-1 text-xs text-red-600">
-                  {errors.password.message}
-                </p>
-              )}
-            </div> */}
+
             <DialogFooter className="sm:justify-start space-x-4 flex !mt-6">
               <DialogClose asChild>
-                <Button type="button" className="flex-1" variant="outline">
+                <Button
+                  ref={refClose}
+                  type="button"
+                  className="flex-1"
+                  variant="outline"
+                >
                   Đóng
                 </Button>
               </DialogClose>
