@@ -53,6 +53,7 @@ export function DialogLogin() {
         console.log(error);
         if (ok) {
           refClose.current?.click();
+          form.reset();
           router.push("/dashboard");
           router.refresh();
         } else {
@@ -121,6 +122,7 @@ export function DialogLogin() {
                     <Input
                       placeholder="Nhập mật khẩu"
                       autoCapitalize="none"
+                      type="password"
                       autoComplete="password"
                       autoCorrect="off"
                       {...field}
