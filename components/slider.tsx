@@ -32,6 +32,7 @@ export const Slider = () => {
         delay: 2500,
         disableOnInteraction: false,
       }}
+      className=""
     >
       <SwiperSlide>
         {({ isActive }) => (
@@ -44,7 +45,7 @@ export const Slider = () => {
               height={850}
               priority
             />
-            <div className="absolute inset-x-0 top-1/4 md:max-w-3xl lg:max-w-5xl mx-auto">
+            <div className="absolute inset-x-0 top-1/4 md:max-w-3xl lg:max-w-5xl mx-6 md:mx-auto">
               <motion.div
                 className=""
                 initial={{ opacity: 0, translateY: 60 }}
@@ -78,7 +79,7 @@ export const Slider = () => {
               height={850}
               priority
             />
-            <div className="absolute inset-x-0 top-1/4  md:max-w-3xl lg:max-w-5xl mx-auto">
+            <div className="absolute inset-x-0 top-1/4  md:max-w-3xl lg:max-w-5xl mx-6 md:mx-auto">
               <motion.div
                 className=""
                 initial={{ opacity: 0, translateY: 60 }}

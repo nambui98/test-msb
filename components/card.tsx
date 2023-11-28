@@ -11,7 +11,7 @@ export default function Card({ id, title, content, imageUrl }: Props) {
       <Image
         src={imageUrl}
         alt="product1"
-        className="h-[210px]"
+        className="h-[210px] w-full object-cover"
         width={333}
         height={210}
       />

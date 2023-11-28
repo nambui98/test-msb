@@ -1,6 +1,6 @@
 import { appConfig } from "@/config/site";
 import { getCurrentUser } from "@/lib/session";
-import { ChevronDown, Phone } from "lucide-react";
+import { AlignJustify, ChevronDown, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { DialogLogin } from "./dialog-login";
@@ -18,6 +18,7 @@ import {
 } from "./ui/menubar";
 import SheetRequestAdvice from "./sheet-request-advice";
 import { MainNavItem } from "@/types";
+import SheetMenu from "./sheet-menu";
 
 type Props = {};
 async function getMenus(): Promise<MainNavItem[] | null> {
@@ -53,7 +54,7 @@ async function Header({}: Props) {
   const mainNav = await getMenus();
 
   return (
-    <div className="px-10 py-4 sticky z-20 top-0 inset-x-0 bg-white flex items-center">
+    <div className="px-5 lg:px-10 py-4 sticky z-20 top-0 inset-x-0 bg-white flex items-center">
       <Link href={"/"}>
         <Image
           src="/images/logo.png"
@@ -65,10 +66,10 @@ async function Header({}: Props) {
         />
       </Link>
       <nav className="ml-auto">
-        <Menubar className="space-x-0 ">
+        <Menubar className="space-x-0">
           {mainNav?.map((nav) => (
             <MenubarMenu key={nav.href + nav.title}>
-              <MenubarTrigger asChild={true}>
+              <MenubarTrigger className=" md:flex hidden" asChild={true}>
                 <Link href={nav.href ?? ""}>
                   {nav.title}
                   {!nav.href && nav.children && (
@@ -128,7 +129,7 @@ async function Header({}: Props) {
             </MenubarMenu>
           )}
           <MenubarMenu>
-            <MenubarTrigger>
+            <MenubarTrigger className=" md:flex hidden">
               <Phone className="w-4 h-4 mr-1" /> 1900 6083
             </MenubarTrigger>
           </MenubarMenu>
@@ -141,6 +142,7 @@ async function Header({}: Props) {
               <NavUser user={user!} />
             </div>
           )}
+          <SheetMenu mainNav={mainNav} />
         </Menubar>
       </nav>
     </div>

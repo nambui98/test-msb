@@ -103,5 +103,10 @@
 }
 
 .swiper-pagination {
-  @apply !bottom-[124px] lg:bottom-7
+  @apply !bottom-20;
+
+  @screen lg {
+    bottom: 124px !important;
+  }
+
 }
