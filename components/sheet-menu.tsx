@@ -86,10 +86,6 @@ export default function SheetMenu({ mainNav }: Props) {
                                 <AccordionTrigger>
                                   {navChildChild.title}
                                 </AccordionTrigger>
-                                <AccordionContent>
-                                  Yes. It comes with default styles that matches
-                                  the other components&apos; aesthetic.
-                                </AccordionContent>
                               </AccordionItem>
                             ))}
                           </Accordion>
